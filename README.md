@@ -108,3 +108,19 @@ public class Main
 }
 ```
 
+Os beans são ignorado, se não estiverem dentro de uma classe de configuração. Por que o Spring não sai procurando beans em tudo que é classe.
+
+```java
+class UserService {
+ ...
+    // Isto será ignorado
+    @Bean
+    public static UserService failedUserService() {
+        return new UserService("Failed");
+    }
+}
+```
+
+O Spring procura components tipo:
+
+@Service, @Component, @Repository, @Controller
