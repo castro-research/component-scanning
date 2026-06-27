@@ -81,3 +81,29 @@ UserService service2 = context.getBean("anotherUserService", UserService.class);
 ```java
 var context = new AnnotationConfigApplicationContext("com.example.demo");
 ```
+
+# SpringBoot Application
+
+Agora explorando com o SpringBoot, o resultado fica mais simples:
+
+```java
+package com.example.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Main
+{
+    public static void main(String[] args)
+    {
+        var context = SpringApplication.run(Main.class, args);
+        UserService service = context.getBean(UserService.class);
+
+        System.out.println(service.name);
+        service.hello();
+        context.close();
+    }
+}
+```
+

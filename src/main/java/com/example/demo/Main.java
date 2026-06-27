@@ -1,13 +1,14 @@
 package com.example.demo;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class Main
 {
     public static void main(String[] args)
     {
-//        var context = new AnnotationConfigApplicationContext(AppConfig.class);
-        var context = new AnnotationConfigApplicationContext("com.example.demo");
+        var context = SpringApplication.run(Main.class, args);
         UserService service = context.getBean(UserService.class);
 
         System.out.println(service.name);
