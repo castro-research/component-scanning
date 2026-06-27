@@ -42,3 +42,42 @@ Caso contrário ( sem a anotação ), daria `NoSuchBeanDefinitionException`:
 ```bash
 Exception in thread "main" org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.example.demo.UserService' available
 ```
+
+OBS:
+
+Se eu combinar o primeiro approach com o segundo, o `@Bean` vai registrar, e não vai registrar novamente o userService.
+
+Agora se eu tiver nomes diferentes, por exemplo:
+
+```java
+@Configuration
+@ComponentScan("com.example.demo")
+class AppConfig {
+    @Bean
+    public UserService anotherUserService() {
+        return new UserService("Teste");
+    }
+}
+```
+
+irá estourar uma exception com `NoUniqueBeanDefinitionException`
+
+Uma forma de resolver isso, esta na [aula anterior](https://spring.academy/courses/spring-framework-essentials/lessons/spring-essentials-component-scanning-lab).
+
+1> Resolve pelo nome
+
+```java
+UserService service = context.getBean("userService", UserService.class);
+UserService service2 = context.getBean("anotherUserService", UserService.class);
+```
+
+2> Com @Qualifier
+3> Com @Primary
+
+-------
+
+3 - Sem o AppConfig, e fazendo scanning pelo package
+
+```java
+var context = new AnnotationConfigApplicationContext("com.example.demo");
+```
