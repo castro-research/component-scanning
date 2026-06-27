@@ -124,3 +124,52 @@ class UserService {
 O Spring procura components tipo:
 
 @Service, @Component, @Repository, @Controller
+
+------
+
+# Experimento 2
+
+## Bean depender do outro
+
+O Spring fornece a injeção automagicamente.
+
+```java
+// Imports ommited...
+
+// AppConfig.java
+@Configuration
+class AppConfig {
+
+    @Bean
+    UserService userService(EmailService emailService) {
+        System.out.println("UserService Created");
+        return new UserService(emailService);
+    }
+
+    @Bean
+    EmailService emailService() {
+        System.out.println("EmailService Created");
+        return new EmailService();
+    }
+}
+
+// UserService.java
+class UserService {
+    public UserService(EmailService emailService) {
+        System.out.println("UserService instance");
+        emailService.hello();
+    }
+
+    public void hello() {
+        System.out.println("Oi");
+    }
+}
+
+// EmailService.java
+public class EmailService {
+    public void hello() {
+        System.out.println("Oi do email");
+    }
+}
+```
+

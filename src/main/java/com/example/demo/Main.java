@@ -11,7 +11,6 @@ public class Main
         var context = SpringApplication.run(Main.class, args);
         UserService service = context.getBean(UserService.class);
 
-        System.out.println(service.name);
         service.hello();
         context.close();
     }
