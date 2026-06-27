@@ -33,4 +33,12 @@ Spring -> Encontra AppCofig -> executa o @Bean -> Cria o UserService
 
 -------
 
-2 - Via `@Component`
+2 - Via `@ComponentScan` + `@Service`
+
+O Spring vai encontrar o UserService no package por causa da anotação `@Service` que esta no UserService.
+
+Caso contrário ( sem a anotação ), daria `NoSuchBeanDefinitionException`:
+
+```bash
+Exception in thread "main" org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.example.demo.UserService' available
+```
