@@ -1,0 +1,11 @@
+Baseado no [Inside the Spring Container > Initialization Phase (Part 2)](https://spring.academy/courses/spring-framework-essentials/lessons/spring-essentials-spring-container-initialization-2)
+
+![lifecycle](./.assets/lifecycle.png)
+
+A idéia é explorar os limites e entender o ciclo de vida.
+
+Ponto 0: 
+
+Com o AppConfig, UserService, e Main, o App compila sem problemas.
+
+Não estamos usando nada do spring, muito menos os beans. Então as classes só estão no mesmo package.
