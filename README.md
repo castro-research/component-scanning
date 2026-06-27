@@ -173,3 +173,37 @@ public class EmailService {
 }
 ```
 
+Podemos simplificar para:
+
+
+```java
+// Imports ommited...
+
+// AppConfig.java
+@Configuration
+class AppConfig {
+}
+
+// UserService.java
+@Service
+class UserService {
+    public UserService(EmailService emailService) {
+        System.out.println("UserService instance");
+        emailService.hello();
+    }
+
+    public void hello() {
+        System.out.println("Oi");
+    }
+}
+
+// EmailService.java
+@Service
+public class EmailService {
+    public void hello() {
+        System.out.println("Oi do email");
+    }
+}
+```
+
+Vai funcionar igual
