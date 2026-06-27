@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import org.springframework.stereotype.Service;
+
+@Service
 class UserService {
     public UserService(EmailService emailService) {
         System.out.println("UserService instance");
