@@ -72,6 +72,7 @@ UserService service2 = context.getBean("anotherUserService", UserService.class);
 ```
 
 2> Com @Qualifier
+
 3> Com @Primary
 
 -------
